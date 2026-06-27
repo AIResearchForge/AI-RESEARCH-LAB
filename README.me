@@ -43,3 +43,154 @@ pip install tavily-python python-dotenv pydantic requests beautifulsoup4 openai 
 
 # 5. Run
 python -m src.main
+
+## 🚀 EXAMPLE USAGE:
+
+============================================================
+🧠 AI RESEARCH LAB — Scientific Agent
+============================================================
+📝 Topic: LLM hallucinations and how to reduce them
+🔬 Field: artificial intelligence
+============================================================
+
+🔬 [Hypothesis Agent] Generating hypothesis...
+✅ Hypothesis generated.
+
+📚 [Research Agent] Searching for literature...
+✅ Literature review completed.
+
+🧪 [Experiment Agent] Analyzing existing research...
+✅ Research analysis completed.
+
+📝 [Reviewer Agent] Reviewing research...
+✅ Review completed.
+
+📄 [Paper Generator] Writing research paper...
+✅ Paper generated.
+
+============================================================
+📋 RESEARCH PAPER:
+============================================================
+# Reducing Hallucinations in Large Language Models: A Comprehensive Review
+
+## Abstract
+Large Language Models (LLMs) have revolutionized natural language processing, yet they are prone to generating hallucinations—outputs that are nonsensical or factually incorrect. This paper reviews existing solutions to mitigate hallucinations in LLMs, focusing on techniques that incorporate user feedback and contextual reinforcement. We explore various methods, including Reinforcement Learning from Human Feedback (RLHF), feedback loops, and contextual cues, assessing their effectiveness and practicality. Our findings indicate that integrating multi-modal feedback mechanisms can significantly reduce hallucinations, with some studies reporting reductions of up to 30%. We provide practical recommendations for implementing these techniques, highlighting quick wins and advanced strategies. The review concludes with a discussion of ongoing challenges and future research directions to enhance the reliability of LLMs.
+
+## 1. Introduction
+The deployment of Large Language Models (LLMs) has transformed numerous applications, from chatbots to content generation. However, a significant challenge remains: LLMs often produce hallucinations—outputs that are inaccurate, nonsensical, or misleading. These hallucinations can undermine user trust and limit the applicability of LLMs in critical domains such as healthcare and legal advice. 
+
+Hallucinations in LLMs are defined as instances where the model generates information that is not grounded in reality or deviates from factual accuracy. This paper aims to review existing solutions to reduce hallucinations in LLMs, focusing on proven techniques that leverage user feedback and contextual reinforcement. 
+
+The structure of this paper is as follows: Section 2 reviews existing solutions, Section 3 compares the effectiveness of these methods, Section 4 provides practical recommendations for implementation, Section 5 discusses challenges and limitations, and Section 6 concludes with key findings and future research directions.
+
+## 2. Review of Existing Solutions
+
+### 2.1. Reinforcement Learning from Human Feedback (RLHF)
+Reinforcement Learning from Human Feedback (RLHF) is a method that fine-tunes language models based on human preferences. Stiennon et al. (2020) demonstrated that models trained with RLHF produced more coherent and relevant outputs. This method involves collecting human feedback on model outputs and using it to adjust the model's parameters, leading to improved performance.
+
+**Effectiveness**: RLHF has shown significant improvements in output quality, particularly in tasks requiring coherence and relevance.
+
+**Pros**: 
+- Enhances model adaptability.
+- Improves user satisfaction.
+
+**Cons**: 
+- Requires substantial human input for feedback.
+- May be resource-intensive.
+
+### 2.2. Feedback Loops
+Feedback loops involve integrating user corrections into the training process. Zhang et al. (2021) proposed a feedback loop that included user corrections and contextual information, resulting in a measurable decrease in hallucinations. This method allows models to learn from their mistakes in real-time.
+
+**Effectiveness**: Feedback loops have been effective in reducing hallucinations, with studies reporting quantifiable improvements in output accuracy.
+
+**Pros**: 
+- Real-time learning from user interactions.
+- Directly addresses inaccuracies.
+
+**Cons**: 
+- Implementation complexity.
+- Dependence on user engagement.
+
+### 2.3. Contextual Cues
+Contextual cues provide additional information that helps models understand the context better. Gao et al. (2021) emphasized the importance of contextual reinforcement in reducing errors and improving model reliability. By incorporating contextual information alongside user feedback, models can generate more coherent and relevant outputs.
+
+**Effectiveness**: Contextual cues have been shown to enhance model understanding, leading to reduced nonsensical outputs.
+
+**Pros**: 
+- Improves contextual awareness.
+- Enhances output relevance.
+
+**Cons**: 
+- Requires careful design of contextual inputs.
+- May increase computational overhead.
+
+### 2.4. Instruction Following with Human Feedback
+Ouyang et al. (2022) explored training language models to follow instructions using human feedback. This multi-modal feedback mechanism, which included user corrections, led to a significant reduction in nonsensical outputs.
+
+**Effectiveness**: This approach has been effective in improving instruction-following capabilities, confirming the hypothesis that user feedback enhances model performance.
+
+**Pros**: 
+- Improves adherence to user instructions.
+- Reduces hallucinations in task-specific contexts.
+
+**Cons**: 
+- May require extensive training data.
+- Potential for overfitting to specific instructions.
+
+## 3. Comparison of Methods
+
+| Method                          | Effectiveness          | Cost               | Ease of Implementation | Recommended For               |
+|---------------------------------|-----------------------|--------------------|------------------------|-------------------------------|
+| Reinforcement Learning (RLHF)   | High                  | High               | Moderate               | General model fine-tuning     |
+| Feedback Loops                  | High                  | Moderate           | High                   | Real-time user interaction     |
+| Contextual Cues                 | Moderate to High      | Moderate           | Moderate               | Context-sensitive applications |
+| Instruction Following with H.F. | High                  | High               | Moderate               | Task-specific applications     |
+
+## 4. Practical Recommendations
+
+### 4.1. Quick Wins (low-hanging fruit)
+1. **Implement Feedback Loops**: Start by integrating user corrections into the model's training process. This can be done by allowing users to flag incorrect outputs and providing a mechanism for the model to learn from these corrections.
+2. **Utilize Contextual Cues**: Incorporate relevant contextual information into the input data to enhance model understanding. This can be achieved by providing additional metadata or user-specific context.
+
+### 4.2. Advanced Techniques
+1. **Adopt RLHF**: For organizations with the resources, implementing RLHF can significantly improve model performance. This involves setting up a system for collecting and processing human feedback effectively.
+2. **Develop Instruction-Following Capabilities**: Train models specifically to follow user instructions using a multi-modal feedback approach, ensuring that the model learns to adhere to user requests accurately.
+
+### 4.3. What to Avoid
+- **Neglecting User Feedback**: Avoid training models without incorporating user feedback, as this has been shown to lead to higher rates of hallucinations.
+- **Over-reliance on Traditional Training Methods**: Standard training methods without user corrections or contextual information are less effective in reducing hallucinations.
+
+## 5. Challenges and Limitations
+Despite the advancements in reducing hallucinations, several challenges remain. The need for substantial human input can be a barrier to implementation, particularly in resource-constrained environments. Additionally, the long-term effects of continuous user feedback on model performance are not yet fully understood. There is also a risk of overfitting to specific user inputs, which may limit the model's generalizability.
+
+## 6. Conclusions
+This review highlights the effectiveness of integrating user feedback and contextual reinforcement in reducing hallucinations in LLMs. Techniques such as RLHF, feedback loops, and contextual cues have demonstrated significant improvements in output quality and reliability. However, challenges remain in quantifying the exact reduction in hallucination rates and understanding the mechanisms behind these improvements. Future research should focus on comprehensive studies to address these gaps and explore the long-term impacts of user feedback on model performance.
+
+## References
+1. Stiennon, N., et al. (2020). Learning to Summarize with Human Feedback. *Advances in Neural Information Processing Systems*.
+2. Ouyang, L., et al. (2022). Training language models to follow instructions with human feedback. *Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing*.
+3. Zhang, Y., et al. (2021). Reducing Hallucinations in Neural Machine Translation. *Proceedings of the 2021 Conference on Machine Translation*.
+4. Gao, T., et al. (2021). Towards Robustness in Language Models: A Survey. *Journal of Machine Learning Research*.
+5. (Additional references as needed).
+============================================================
+
+PROJECT STRUCTURE:
+
+AI-RESEARCH-LAB/
+├── README.md
+├── .env
+├── .gitignore
+├── config/
+│   └── openai_config.py
+├── src/
+│   ├── __init__.py
+│   ├── graph.py        
+│   ├── prompts.py       
+│   ├── tools.py         
+│   ├── memory.py         
+│   └── main.py           
+├── examples/
+│   ├── __init__.py
+│   └── example_topics.txt
+└── langflow/
+    └── research_lab_flow.json
