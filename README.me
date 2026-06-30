@@ -1,27 +1,43 @@
-# 🧠 AI Research Lab — Scientific Agent
+## 🧠 AI Research Lab — Scientific Agent
 
 An AI agent that simulates the research process – from hypothesis to a complete scientific paper.
+
+The system is available in two versions:
+- **LangGraph (CLI)** – full stateful workflow with checkpointing and advanced control flow.
+- **LangFlow (GUI)** – visual representation for prototyping and testing.
 
 ## 🎯 Idea
 
 The user provides a research topic, and the AI:
-1. **Hypothesis Agent** – Generates a research hypothesis.
-2. **Research Agent** – Searches for literature and data.
-3. **Experiment Agent** – Analyzes existing research.
-4. **Reviewer Agent** – Evaluates results and conclusions.
-5. **Paper Generator** – Creates a review paper.
+
+1. **Hypothesis Agent** – Generates a research hypothesis based on the topic.
+2. **Research Agent** – Searches for existing literature and data.
+3. **Experiment Agent** – Analyzes existing research and experiments.
+4. **Reviewer Agent** – Evaluates the state of knowledge and provides feedback.
+5. **Paper Generator** – Creates a comprehensive review paper.
+
+## 🧠 How LangGraph Works in This Project
+
+The workflow is defined as a **stateful graph** where each agent is a node:
+[Hypothesis Agent] → [Research Agent] → [Experiment Agent] → [Reviewer Agent] → [Paper Generator]
+
+
+**Key features of this implementation**:
+- **Shared State**: All agents share a common `ResearchState` object containing the topic, hypothesis, literature, experiment, review, and final paper.
+- **Sequential Flow**: Each agent builds on the output of the previous one.
+- **Checkpointing**: The graph uses `MemorySaver` to persist state between steps.
+- **Error Handling**: Each node can handle errors gracefully and pass them to the next node.
 
 ## 🛠️ Technologies
 
 - **LangChain 1.2.18** – framework for building AI agents
-- **LangGraph 1.2.6** – flow graphs for complex processes
+- **LangGraph 1.2.6** – stateful graph-based workflow orchestration
 - **OpenAI API** – GPT models
 - **Tavily** – internet search
-- **LangFlow** – visual environment
+- **LangFlow** – visual environment for prototyping and testing
 
 ## 📦 Installation
 
-```bash
 # 1. Clone
 git clone https://github.com/AIResearchForge/AI-RESEARCH-LAB.git
 cd AI-RESEARCH-LAB
@@ -41,10 +57,12 @@ pip install tavily-python python-dotenv pydantic requests beautifulsoup4 openai 
 # 4. Configuration
 # Edit the .env file and enter your API keys
 
-# 5. Run
+# 5. Run (CLI version)
 python -m src.main
 
 ## 🚀 EXAMPLE USAGE:
+
+🔬 Enter research topic: LLM hallucinations and how to reduce them
 
 ============================================================
 🧠 AI RESEARCH LAB — Scientific Agent
@@ -194,3 +212,34 @@ AI-RESEARCH-LAB/
 │   └── example_topics.txt
 └── langflow/
     └── research_lab_flow.json
+
+🎨 LangFlow Version (GUI)
+The project includes a fully functional LangFlow export file: langflow/research_lab_flow.json
+
+This allows you to build and test the same workflow visually without writing any code.
+
+To use the LangFlow version:
+
+Import the flow:
+- Open your browser at http://localhost:7860
+- Click "Import Flow"
+- Select langflow/research_lab_flow.json
+
+The visual workflow will load with all 5 agents and their connections
+
+Test in Playground:
+- Enter a research topic
+- Watch the agents execute step by step in the visual interface
+
+What you can do in LangFlow:
+- Modify agent prompts in real-time
+- Adjust model parameters (temperature, max tokens)
+- Add or remove tools visually
+- Debug the flow step by step
+- Export the modified flow back to JSON
+
+Important difference:
+
+The LangGraph (CLI) version uses a stateful graph with checkpointing and is ideal for production deployment.
+The LangFlow (GUI) version is best for prototyping, testing, and demonstrating the workflow to non-technical stakeholders.
+
